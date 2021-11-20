@@ -51,13 +51,13 @@ The first step toward building a domain model and deciding which classes were ne
 | ---------- | ---------------------- | --------------------------- | ---------- | ------------------------- |
 | ✅         | DockingStation#release | when there are bikes        | release()  | bike                      |
 | ✅         | DockingStation#release | when there are none         | release()  | "Sorry, none available"   |
-| ✅         | DockingStation#release | when there are none working | release()  | "Sorry, all bikes broken" |
+|            | DockingStation#release | when there are none working | release()  | "Sorry, all bikes broken" |
 | ✅         | DockingStation#dock    | below capacity              | dock(bike) | [bike]                    |
 | ✅         | DockingStation#dock    | at or above capacity        | dock(bike) | "Sorry, full!"            |
-| ✅         | Bike#working?          | when it works               | working?   | true                      |
-| ✅         | Bike#working?          | when it is broken           | working?   | false                     |
-| ✅         | Bike#report            | when it is working          | report     | false                     |
-| ✅         | Bike#report            | when it is broken           | report     | false                     |
+|            | Bike#working?          | when it works               | working?   | true                      |
+|            | Bike#working?          | when it is broken           | working?   | false                     |
+|            | Bike#report            | when it is working          | report     | false                     |
+|            | Bike#report            | when it is broken           | report     | false                     |
 
 <br><br>
 
