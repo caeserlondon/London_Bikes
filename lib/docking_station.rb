@@ -1,33 +1,38 @@
 # frozen_string_literal: true
 
 class DockingStation
-  CAPACITY = 20
-  attr_reader :bikes
+	CAPACITY = 20
+	attr_reader :bikes
 
-  def initialize(capacity: CAPACITY)
-    @capacity = capacity
-    @bikes = []
-  end
+	def initialize(capacity: CAPACITY)
+		@capacity = capacity
+		@bikes = []
+	end
 
-  def dock(bike)
-    return 'Sorry, full' if full?
+	def dock(bike)
+		return 'Sorry, full' if full?
 
-    @bikes.push(bike) # or            @bikes << bike
-  end
+		@bikes.push(bike) # or            @bikes << bike
+	end
 
-  def release
-    return 'Sorry, no bikes available' if empty?
+	def release
+		return 'Sorry, none available' if empty?
+		return 'Sorry, all are broken' if all_broken?
 
-    @bikes.pop
-  end
+		@bikes.find(&:working?)
+	end
 
-  private
+	private
 
-  def empty?
-    bikes.length.zero?
-  end
+	def empty?
+		bikes.length.zero?
+	end
 
-  def full?
-    bikes.length >= @capacity
-  end
+	def full?
+		bikes.length >= @capacity
+	end
+
+	def all_broken?
+		bikes.none?(&:working?)
+	end
 end
