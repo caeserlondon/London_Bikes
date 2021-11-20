@@ -1,6 +1,11 @@
 # London Bikes
 
-The objective is to build a program that will emulate all the `docking stations`, `bikes`, and `infrastructure` (`repair staff`, and `so on`).
+The objective is to build a program that will emulate all the ( `docking stations`, `bikes`, `infrastructure` , `repair staff`, and `so on.`)
+
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
+[![Build Status](https://github.com/rspec/rspec-mocks/workflows/RSpec%20CI/badge.svg)](https://github.com/rspec/rspec-mocks/actions)
+
 <br><br>
 
 ## The first step
