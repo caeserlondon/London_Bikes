@@ -1,86 +1,83 @@
 # frozen_string_literal: true
 
-it 'can dock a bike' do
-  # arrange(set up)
-  docking_station = DockingStation.new
-  bike = Bike.new
+require './lib/docking_station'
+require './lib/bike'
 
-  # act(execute)
-  docking_station.dock(bike)
-  result = docking_station.bikes == [bike]
+describe 'docking_station' do
+  it 'can dock a bike' do
+    # the triple A
+    # arrange(set up)
+    docking_station = DockingStation.new
+    bike = Bike.new
 
-  # assert(verify)
-  assert_equals(result, true)
-end
+    # act(execute)
+    docking_station.dock(bike)
 
-it 'can release a bike' do
-  # the triple A
-  # Arrange (set up)
-  docking_station = DockingStation.new
-  bike = Bike.new
-  docking_station.dock(bike)
+    # assert(verify)
+    expect(docking_station.bikes).to eq([bike])
+  end
 
-  # Act (execute)
-  result = docking_station.release
+  it 'can release a bike' do
+    # Arrange (set up)
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock(bike)
 
-  # Assert (verify)
-  assert_equals(result, bike)
-end
+    # Act (execute) & Assert (verify)
+    expect(docking_station.release).to eq(bike)
+  end
 
-it 'will not release a bike if there are none' do
-  docking_station = DockingStation.new
-  result = docking_station.release
-  assert_equals(result, 'Sorry, none available')
-end
+  it 'will not release a bike if there are none' do
+    docking_station = DockingStation.new
 
-it 'has a default capacity constant of 20' do
-  result = DockingStation::CAPACITY
-  assert_equals(result, 20)
-end
+    expect(docking_station.release).to eq('Sorry, none available')
+  end
 
-it 'can be initialize with a variable capacity' do
-  capacity = 1
-  docking_station = DockingStation.new(capacity: capacity)
-  capacity.times { docking_station.dock(Bike.new) }
+  it 'has a default capacity constant of 20' do
+    expect(DockingStation::CAPACITY).to eq(20)
+  end
 
-  result = docking_station.dock(Bike.new)
-  assert_equals(result, 'Sorry, full')
-end
+  it 'can be initialize with a variable capacity' do
+    capacity = 1
+    docking_station = DockingStation.new(capacity: capacity)
+    capacity.times { docking_station.dock(Bike.new) }
 
-it 'will not dock a bike when at or above capacity' do
-  # arrange(set up)
-  docking_station = DockingStation.new
-  20.times { docking_station.dock(Bike.new) }
+    expect(docking_station.dock(Bike.new)).to eq('Sorry, full')
+  end
 
-  # act(execute)
-  result = docking_station.dock(Bike.new)
+  it 'will not dock a bike when at or above capacity' do
+    # arrange(set up)
+    docking_station = DockingStation.new
+    20.times { docking_station.dock(Bike.new) }
 
-  # assert(verify)
-  assert_equals(result, 'Sorry, full')
-end
+    # act(execute) & assert(verify)
+    expect(docking_station.dock(Bike.new)).to eq('Sorry, full')
+  end
 
-it 'will not release a bike if there are no working bikes' do
-  docking_station = DockingStation.new(capacity: 1)
-  bike = Bike.new
-  bike.report
-  docking_station.dock(bike)
-  result = docking_station.release
-  assert_equals(result, 'Sorry, all are broken')
-end
+  it 'will not release a bike if there are no working bikes' do
+    docking_station = DockingStation.new(capacity: 1)
+    bike = Bike.new
+    bike.report
+    docking_station.dock(bike)
 
-it 'only releasees bikes that are working' do
-  # the triple A
-  # Arrange (set up)
-  docking_station = DockingStation.new
-  working_bike = Bike.new
-  broken_bike = Bike.new
-  broken_bike.report
-  docking_station.dock(working_bike)
-  docking_station.dock(broken_bike)
+    expect(docking_station.release).to eq('Sorry, all are broken')
+  end
 
-  # Act (execute)
-  result = docking_station.release
+  it 'only releasees bikes that are working' do
+    # the triple A
+    # Arrange (set up)
+    docking_station = DockingStation.new
+    working_bike = Bike.new
+    broken_bike = Bike.new
+    broken_bike.report
+    docking_station.dock(working_bike)
+    docking_station.dock(broken_bike)
 
-  # Assert (verify)
-  assert_equals(result, working_bike)
+    # Act (execute)
+    #	result = docking_station.release
+
+    # Assert (verify)
+
+    expect(docking_station.release).to eq(working_bike)
+  end
 end

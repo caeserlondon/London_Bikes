@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# the Bike class
 class Bike
   def initialize
     @working = true

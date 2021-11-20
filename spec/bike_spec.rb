@@ -1,37 +1,33 @@
 # frozen_string_literal: true
 
-it 'can show it is working' do
-  # set up
-  bike = Bike.new
+require './lib/docking_station'
+require './lib/bike'
 
-  # excute
-  result = bike.working?
+describe 'bike' do
+  it 'can show it is working' do
+    # set up
+    bike = Bike.new
 
-  # verify
-  assert_equals(result, true)
-end
+    # excute & verify
+    expect(bike.working?).to eq(true)
+  end
 
-it 'can be reported as broken' do
-  # set up
-  bike = Bike.new
-  bike.report
+  it 'can be reported as broken' do
+    # set up
+    bike = Bike.new
+    bike.report
 
-  # excute
-  result = bike.working?
+    # excute & verify
+    expect(bike.working?).to eq(false)
+  end
 
-  # verify
-  assert_equals(result, false)
-end
+  it 'can be reported as broken even if already broken' do
+    # set up
+    bike = Bike.new
+    bike.report
+    bike.report
 
-it 'can be reported as broken even if already broken' do
-  # set up
-  bike = Bike.new
-  bike.report
-  bike.report
-
-  # excute
-  result = bike.working?
-
-  # verify
-  assert_equals(result, false)
+    # excute & verify
+    expect(bike.working?).to eq(false)
+  end
 end
