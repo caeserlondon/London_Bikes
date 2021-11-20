@@ -11,3 +11,4 @@ require './lib/bike'
 
 # require spec code
 require './spec/docking_station_spec'
+require './spec/bike_spec'
