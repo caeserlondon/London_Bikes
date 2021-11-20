@@ -1,6 +1,6 @@
 # London Bikes
 
-The objective is to build a program that will emulate all the ( `docking stations`, `bikes`, `infrastructure` , `repair staff`, and `so on.`)
+The objective is to build a program that will emulate all the `docking stations`, `bikes`, and `infrastructure` (`repair staff`, and `so on`).
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rubystyle.guide)
@@ -56,13 +56,13 @@ The first step toward building a domain model and deciding which classes were ne
 | ---------- | ---------------------- | --------------------------- | ---------- | ------------------------- |
 | ✅         | DockingStation#release | when there are bikes        | release()  | bike                      |
 | ✅         | DockingStation#release | when there are none         | release()  | "Sorry, none available"   |
-|            | DockingStation#release | when there are none working | release()  | "Sorry, all bikes broken" |
+| ✅         | DockingStation#release | when there are none working | release()  | "Sorry, all bikes broken" |
 | ✅         | DockingStation#dock    | below capacity              | dock(bike) | [bike]                    |
 | ✅         | DockingStation#dock    | at or above capacity        | dock(bike) | "Sorry, full!"            |
-|            | Bike#working?          | when it works               | working?   | true                      |
-|            | Bike#working?          | when it is broken           | working?   | false                     |
-|            | Bike#report            | when it is working          | report     | false                     |
-|            | Bike#report            | when it is broken           | report     | false                     |
+| ✅         | Bike#working?          | when it works               | working?   | true                      |
+| ✅         | Bike#working?          | when it is broken           | working?   | false                     |
+| ✅         | Bike#report            | when it is working          | report     | false                     |
+| ✅         | Bike#report            | when it is broken           | report     | false                     |
 
 <br><br>
 
